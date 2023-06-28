@@ -9,7 +9,7 @@ var compactObject = function (obj) {
         .map(([_, v]) => v === Object(v) ? compactObject(v) : v)
     : Object.fromEntries(
         Object.entries(obj)
-          .filter(([_, v]) => v)
+          .filter(([_, v]) => Boolean(v))
           .map(([k, v]) => [k, v === Object(v) ? compactObject(v) : v])
       );
 };
